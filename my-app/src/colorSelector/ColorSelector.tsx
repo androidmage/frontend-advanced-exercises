@@ -1,11 +1,10 @@
 import { Container, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import React from "react";
-import { useColorContext } from './ColorContext';
+import { useColorContext } from '../context/ColorContext';
 
-function ColorSelector(props: { player: number, color: string }) {
+function ColorSelector(props: { player: number }) {
   const { colors, colorMap, updateColorMapping } = useColorContext();
-  const initColor: string = colorMap.get(props.player);
-  const [color, setColor] = React.useState(initColor);
+  const [color, setColor] = React.useState(colorMap.get(props.player));
 
   const handleChange = (event: SelectChangeEvent) => {
     const newColor = event.target.value as string;
@@ -16,16 +15,18 @@ function ColorSelector(props: { player: number, color: string }) {
   const usedColors: string[] = [...colorMap.values()];
   const menu: any[] = [];
   colors.forEach((color: string) => {
-    if (!usedColors.includes(color)) {
+    if (!usedColors.includes(color) || color === 'No color') {
       menu.push(<MenuItem value={color}>{color}</MenuItem>)
     }
   })
-  menu.push(<MenuItem value={color}>{color}</MenuItem>);
+  if (color !== 'No color') {
+    menu.push(<MenuItem value={color}>{color}</MenuItem>);
+  }
   return (
     <Container sx={{
       width: 300,
       height: 300,
-      backgroundColor: color,
+      backgroundColor: (color === 'No color' ? 'white' : color),
     }}>
       <p>test {props.player}</p>
       <FormControl fullWidth>

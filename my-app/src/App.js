@@ -3,14 +3,14 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import ColorSelector from './ColorSelector';
+import ColorSelector from './colorSelector/ColorSelector';
 import Container from '@mui/material/Container';
-import { colorContext } from './ColorContext';
+import { colorContext } from './context/ColorContext';
 import React from "react";
 
 function App() {
-  const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
-  const [colorMap, setColorMap] = React.useState(new Map([[1, 'red'], [2, 'blue'], [3, 'yellow'], [4, 'green']]));
+  const colors = ['No color', 'red', 'blue', 'green', 'yellow', 'purple', 'orange']
+  const [colorMap, setColorMap] = React.useState(new Map([[1, 'No color'], [2, 'No color'], [3, 'No color'], [4, 'No color']]));
   
   const updateColorMapping = (key, color) => {
     const updatedColorMap = new Map(colorMap);
@@ -26,16 +26,16 @@ function App() {
           display: 'flex',
           flexDirection: 'row',
         }}>
-          <ColorSelector player={1} color='red'></ColorSelector>
-          <ColorSelector player={2} color='blue'></ColorSelector>
+          <ColorSelector player={1}></ColorSelector>
+          <ColorSelector player={2}></ColorSelector>
         </Container>
         <Container sx={{
           marginTop: '50px',
           display: 'flex',
           flexDirection: 'row',
         }}>
-          <ColorSelector player={3} color='yellow'></ColorSelector>
-          <ColorSelector player={4} color='green'></ColorSelector>
+          <ColorSelector player={3}></ColorSelector>
+          <ColorSelector player={4}></ColorSelector>
         </Container>
       </colorContext.Provider>
     </Container>
