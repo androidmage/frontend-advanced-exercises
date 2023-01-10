@@ -3,7 +3,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import ColorSelector from './colorSelector/ColorSelector';
+import ColorSelector from './components/colorSelector/ColorSelector';
 import Container from '@mui/material/Container';
 import { colorContext } from './context/ColorContext';
 import React from "react";
